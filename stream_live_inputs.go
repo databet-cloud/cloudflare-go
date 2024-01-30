@@ -264,6 +264,7 @@ func (api *API) ListStreamLiveInputVideos(
 	if options.AccountID == "" {
 		return []StreamVideo{}, ErrMissingAccountID
 	}
+
 	if options.LiveInputID == "" {
 		return []StreamVideo{}, ErrMissingLiveInputID
 	}
