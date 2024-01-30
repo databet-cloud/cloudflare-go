@@ -255,3 +255,29 @@ func (api *API) UpdateStreamLiveInput(
 
 	return streamListResponse.Result, nil
 }
+
+// ListStreamLiveInputVideos list videos associated with live input.
+func (api *API) ListStreamLiveInputVideos(
+	ctx context.Context,
+	options StreamLiveInputParameters,
+) ([]StreamVideo, error) {
+	if options.AccountID == "" {
+		return []StreamVideo{}, ErrMissingAccountID
+	}
+	if options.LiveInputID == "" {
+		return []StreamVideo{}, ErrMissingLiveInputID
+	}
+
+	uri := fmt.Sprintf("/accounts/%s/stream/live_inputs/%s/videos", options.AccountID, options.LiveInputID)
+	res, err := api.makeRequestContext(ctx, http.MethodPost, uri, options)
+	if err != nil {
+		return []StreamVideo{}, err
+	}
+
+	var streamListResponse StreamListResponse
+	if err := json.Unmarshal(res, &streamListResponse); err != nil {
+		return []StreamVideo{}, err
+	}
+
+	return streamListResponse.Result, nil
+}
