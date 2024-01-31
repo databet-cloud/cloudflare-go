@@ -270,7 +270,7 @@ func (api *API) ListStreamLiveInputVideos(
 	}
 
 	uri := fmt.Sprintf("/accounts/%s/stream/live_inputs/%s/videos", options.AccountID, options.LiveInputID)
-	res, err := api.makeRequestContext(ctx, http.MethodPost, uri, options)
+	res, err := api.makeRequestContext(ctx, http.MethodGet, uri, options)
 	if err != nil {
 		return []StreamVideo{}, err
 	}
