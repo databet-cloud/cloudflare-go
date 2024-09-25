@@ -77,10 +77,11 @@ type StreamLiveInputStatus struct {
 
 // StreamLiveInputRecording represents the recording configuration for the live input value.
 type StreamLiveInputRecording struct {
-	Mode              string   `json:"mode,omitempty"`
-	RequireSignedURLs bool     `json:"requireSignedURLs,omitempty"`
-	AllowedOrigins    []string `json:"allowedOrigins,omitempty"`
-	TimeoutSeconds    int      `json:"timeoutSeconds,omitempty"`
+	Mode                string   `json:"mode,omitempty"`
+	RequireSignedURLs   bool     `json:"requireSignedURLs,omitempty"`
+	AllowedOrigins      []string `json:"allowedOrigins,omitempty"`
+	TimeoutSeconds      int      `json:"timeoutSeconds,omitempty"`
+	HideLiveViewerCount bool     `json:"hideLiveViewerCount,omitempty"`
 }
 
 // ListStreamLiveInputsParameters represents parameters used when listing stream live inputs.
